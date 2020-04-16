@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:gravity="center">
+
+
+    <EditText
+        android:id="@+id/a"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/a"
+        android:inputType="number"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/b"
+        android:layout_below="@+id/a"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/b"
+        android:inputType="number"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/c"
+        android:layout_below="@+id/b"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/c"
+        android:inputType="number"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/d"
+        android:layout_below="@+id/c"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/d"
+        android:inputType="number"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/y"
+        android:layout_below="@+id/d"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/y"
+        android:inputType="number"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <EditText
+        android:id="@+id/mutationCoefficient"
+        android:layout_below="@+id/y"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:hint="@string/mutation"
+        android:inputType="numberDecimal"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/calculate_button"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="@string/button"
+        android:layout_below="@+id/mutationCoefficient"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/result_text"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/calculate_button"
+        android:layout_marginLeft="32dp"
+        android:layout_marginRight="32dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/result"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab_3.3</string>
+    <string name="a">Введіть а</string>
+    <string name="b">Введіть b</string>
+    <string name="c">Введіть c</string>
+    <string name="d">Введіть d</string>
+    <string name="y">Введіть y</string>
+    <string name="mutation">Введіть коеф мутації</string>
+    <string name="button">Розрахувати</string>
+    <string name="result">Тут виведуться результати</string>
+</resources>
