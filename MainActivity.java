@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -29,8 +31,9 @@ public class MainActivity extends AppCompatActivity {
     int cInt;
     int dInt;
     double mutationDouble;
+    long algorithmTime;
 
-    int[] result = new int[4];
+    DecimalFormat df = new DecimalFormat("#.##");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,10 +69,34 @@ public class MainActivity extends AppCompatActivity {
                     dInt = Integer.parseInt(text5);
                     mutationDouble = Double.parseDouble(text6);
                     if (mutationDouble < 0.0 || mutationDouble > 1.0) {
-                        Toast.makeText(getApplicationContext(), "Коефіціент мутації" +
+                        Toast.makeText(getApplicationContext(), "Початковий коефіціент мутації" +
                                 "повинен бути більше 0 та менше 1!", Toast.LENGTH_SHORT).show();
                     } else {
-                        viewRes.setText(geneticAlgorithm());
+                        ArrayList<Double> mutCoef = new ArrayList<>();
+                        ArrayList<Integer> countOfUsing = new ArrayList<>();
+                        String result = "";
+                        double bestMutationCoefficient = 0;
+                        for (int i = 0; i < 1000; i++) {
+                            long bestTime = Long.MAX_VALUE;
+                            for (; mutationDouble <= 1.0; mutationDouble += 0.05) {
+                                geneticAlgorithm();
+                                if (algorithmTime < bestTime) {
+                                    bestTime = algorithmTime;
+                                    bestMutationCoefficient = mutationDouble;
+                                }
+                            }
+                            if(mutCoef.contains(bestMutationCoefficient)) {
+                                countOfUsing.set(mutCoef.indexOf(bestMutationCoefficient),
+                                        countOfUsing.get(mutCoef.indexOf(bestMutationCoefficient)) + 1);
+                            } else {
+                                mutCoef.add(bestMutationCoefficient);
+                                countOfUsing.add(1);
+                            }
+                        }
+                        mutationDouble = mutCoef.get(countOfUsing.indexOf(Collections.max(countOfUsing)));
+                        result = geneticAlgorithm();
+                        result += "\nНайкращий коефіціент мутації - " + df.format(mutationDouble);
+                        viewRes.setText(result);
                     }
                 }
             }
@@ -78,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private String geneticAlgorithm() {
+        long start = System.nanoTime();
         Random rand = new Random();
         int size = 5;
         ArrayList<ArrayList<Integer>> population = new ArrayList<>();
@@ -89,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
             }
             population.add(tmp);
         }
-
         while (true) {
             double sumDeltas = 0;
             int[] deltas = new int[size];
@@ -155,6 +182,7 @@ public class MainActivity extends AppCompatActivity {
                             rand.nextInt(yInt / 2));
                 }
             }
+            algorithmTime = System.nanoTime() - start;
         }
     }
 

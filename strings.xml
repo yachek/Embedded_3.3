@@ -5,7 +5,7 @@
     <string name="c">Введіть c</string>
     <string name="d">Введіть d</string>
     <string name="y">Введіть y</string>
-    <string name="mutation">Введіть коеф мутації</string>
+    <string name="mutation">Введіть початковий коеф мутації</string>
     <string name="button">Розрахувати</string>
     <string name="result">Тут виведуться результати</string>
 </resources>
